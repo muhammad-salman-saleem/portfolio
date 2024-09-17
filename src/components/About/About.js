@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "../../styles/About/About.scss";
+import { experienceStartDate } from "../../App";
 
 const About = () => {
+  const [experience, setExperience] = useState('');
+
+  useEffect(() => {
+    const calculateExperience = (startDate) => {
+      const start = new Date(startDate);
+      const now = new Date();
+  
+      let years = now.getFullYear() - start.getFullYear();
+      let months = now.getMonth() - start.getMonth();
+  
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      // Return a string with years and months, if months > 0
+      return months > 0 ? `${years} years and ${months} months` : `${years} years`;
+    };
+
+    const experienceValue = calculateExperience(experienceStartDate);
+    setExperience(experienceValue);
+  }, []);
 
   return (
     <>
@@ -73,8 +96,9 @@ const About = () => {
                   H<span>ello,</span>
                 </h2>
                 <p>
-                  I am <span>Your Name Here.</span> <br /> Highly passoinate
-                  front-end Developer with more than 1.5 years of experience.
+                  I am <span>Muhammad Salman</span> <br /> Highly passoinate
+                  MERN Stack Developer with {experience} of experience in both web and native
+                  application development.
                 </p>
               </Link>
             </div>
@@ -93,10 +117,10 @@ const About = () => {
                   E<span>xperience</span>
                 </h2>
                 <p>
-                  <span>6 month of experience.</span>
-                  <br />I have more than 1.5 years of experience in developing
-                  highly responsive frontend of websites using React.js and
-                  Vue.js
+                  <span>{experience} of experience.</span>
+                  <br />Highly skilled and motivated MERN Stack Developer with {experience} of experience in both web and native
+application development. Proficient in leveraging the power of MongoDB, Express.js, React.js, Next.js, and
+Node.js to create robust and scalable applications.
                 </p>
               </Link>
             </div>
@@ -119,14 +143,8 @@ const About = () => {
                 </p>
                 <ul>
                   <li>
-                    <span>XYZ Pvt Ltd</span> - Front-end Developer{" "}
-                  </li>
-                  <li>
-                    <span>XYZ Pvt Ltd</span> - Front-end Developer{" "}
-                  </li>
-                  <li>
-                    <span>XYZ Pvt Ltd</span> - Front-end Developer{" "}
-                  </li>
+                    <span>Loop Nixon</span> - Full Stack Developer Developer{" "}
+                  </li> 
                 </ul>
               </Link>
             </div>
@@ -145,9 +163,9 @@ const About = () => {
                   E<span>ngineering</span>
                 </h2>
                 <p>
-                  <span>College Name </span>
+                  <span>Univeristy Of Education Lahore</span>
                   <br />
-                  Description.... Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam vitae aliquid dolorum qui reiciendis mollitia, itaque dolores eaque ullam quo soluta libero! Natus.
+                  Graduated with a Bachelor of Science in Information Technology, achieving a CGPA of 3.01.
                 </p>
               </Link>
             </div>

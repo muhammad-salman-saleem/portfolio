@@ -4,8 +4,9 @@ import React from 'react';
 import Collapsible from 'react-collapsible';
 
 import '../styles/ProjectCard.scss';
-
+const colors = ['#00ffff', '#ffa500', '#5ced73', '#b19cd9', '#ff6347'];
 const ProjectCard = (props) => {
+  const borderColor = colors[props.index % colors.length]; 
   return (
     <>
       <div
@@ -13,6 +14,7 @@ const ProjectCard = (props) => {
         data-aos="fade-up"
         data-aos-once="true"
         data-aos-delay={props.cardContent.animationDelay}
+        style={{ borderTopColor: borderColor }}
       >
         <div className="project-card__container">
           <Collapsible trigger={props.cardContent.heading}>
@@ -22,6 +24,7 @@ const ProjectCard = (props) => {
                 href={props.cardContent.buttonLink}
                 target="_blank"
                 rel="noreferrer"
+                style={{ backgroundColor: borderColor,display:props.cardContent.buttonLink===""&&"none" }}
               >
                 {props.cardContent.buttonText}
               </a>

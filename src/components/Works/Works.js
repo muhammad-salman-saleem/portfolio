@@ -61,9 +61,9 @@ const Works = () => {
           </div>
           <div className="works__grid">
             <div className="works__grid-container">
-              {data.portfolio.projectCard.cards.map((content) => (
+              {data.portfolio.projectCard.cards.map((content,index) => (
                 // Each project cards 
-                <ProjectCard key={content.heading} cardContent={content} />
+                <ProjectCard key={content.heading} cardContent={content} index={index}/>
               ))}
             </div>
           </div>

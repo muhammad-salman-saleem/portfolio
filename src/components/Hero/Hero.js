@@ -1,21 +1,45 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 
-import '../../styles/Hero/Hero.scss';
+import "../../styles/Hero/Hero.scss";
 
-import Myself from '../../assets/images/myself.png';
+import Myself from "../../assets/images/myself.png";
+import { experienceStartDate } from "../../App";
+import CV from "../../assets/Full Stack Developer.pdf"
 
 const Hero = () => {
+  const [experience, setExperience] = useState('');
   useEffect(() => {
-    const alphbets = document.getElementsByClassName('hero__alphabet');
+    const alphbets = document.getElementsByClassName("hero__alphabet");
     for (let i = 0; i <= alphbets.length; i++) {
-      alphbets[i]?.addEventListener('animationend', function () {
-        alphbets[i].classList.remove('alphabet-animated');
+      alphbets[i]?.addEventListener("animationend", function () {
+        alphbets[i].classList.remove("alphabet-animated");
       });
 
-      alphbets[i]?.addEventListener('mouseover', function () {
-        alphbets[i].classList.add('alphabet-animated');
+      alphbets[i]?.addEventListener("mouseover", function () {
+        alphbets[i].classList.add("alphabet-animated");
       });
     }
+  }, []);
+
+  useEffect(() => {
+    const calculateExperience = (startDate) => {
+      const start = new Date(startDate);
+      const now = new Date();
+  
+      let years = now.getFullYear() - start.getFullYear();
+      let months = now.getMonth() - start.getMonth();
+  
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      // Return a string with years and months, if months > 0
+      return months > 0 ? `${years} years and ${months} months` : `${years} years`;
+    };
+
+    const experienceValue = calculateExperience(experienceStartDate);
+    setExperience(experienceValue);
   }, []);
 
   return (
@@ -105,10 +129,16 @@ const Hero = () => {
               data-aos-delay="2200"
             >
               <p>
-                I'm a passionate and responsible{' '}
-                <span>Full Stach Developer</span>, with more than 1.5 years of
-                experience. Skilled in developing highly responsive websites and
-                mobile apps with elegant and efficient code.
+                Highly skilled and motivated <span>MERN Stack Developer</span>{" "}
+                with {experience} of experience in both web and native application
+                development. Proficient in leveraging the power of MongoDB,
+                Express.js, React.js, Next.js, and Node.js to create robust and
+                scalable applications. Adept at collaborating with
+                cross-functional teams to deliver innovative solutions that meet
+                both user needs and business objectives. Seeking to contribute
+                my expertise in full-stack development to a dynamic team, where
+                I can continue to grow and make meaningful contributions to
+                cutting-edge projects.
               </p>
             </div>
 
@@ -128,6 +158,16 @@ const Hero = () => {
                 data-aos-delay="2000"
               >
                 Contact me
+              </a>
+            </div>
+            <div className="hero__buttons" style={{marginTop:"1em"}}>
+              <a
+                className="hero__contact-btn"
+                href={CV} download
+                data-aos="fade-up"
+                data-aos-delay="2200"
+              >
+                Download Resume
               </a>
             </div>
           </div>

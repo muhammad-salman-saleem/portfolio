@@ -18,15 +18,22 @@ const Skill = () => {
         'CSS',
         'SASS',
         'JavaScript',
+        'TypeScript',
         'React',
-        'Vue',
-        'Nuxt',
+        'Next',
         'NodeJS',
-        'Shopify',
-        'Jquery',
-        'ES6',
+        'Express',
+        'MongoDB',
+        'SQL',
+        'Postgres',
+        'Firebase',
+        'MUI',
+        'Tailwind',
+        'Next UI',
         'GIT',
         'GITHUB',
+        "LLM",
+        "AWS",
       ];
 
 
@@ -111,7 +118,7 @@ const Skill = () => {
                     </li>
                     <li>
                       <span>
-                        <b>Preprocessors:</b> PUG, SASS
+                        <b>Preprocessors:</b> SASS, MUI, Tailwing, Next UI
                       </span>
                     </li>
                     <li>
@@ -122,12 +129,18 @@ const Skill = () => {
                   </ul>
                 </div>
                 <div className="skill__details">
-                  <h4>JavaScript</h4>
+                  <h4>JavaScript/Typescript</h4>
                   <ul>
                     <li>
                       <span>
                         <b>Frameworks & Libraries:</b> &nbsp; React JS, React
-                        Native, Vue.js, Nuxt
+                        Native, Next.js,
+                      </span>
+                    </li>
+                    <li>
+                      <span>
+                        <b>DataBase:</b> &nbsp; MongoDB, SQL
+                        Postgres,
                       </span>
                     </li>
                     <li>
@@ -137,7 +150,7 @@ const Skill = () => {
                       <span>Node.js</span>
                     </li>
                     <li>
-                      <span>jQuery</span>
+                      <span>Express.Js</span>
                     </li>
                     <li>
                       <span>Typescript</span>
@@ -153,10 +166,10 @@ const Skill = () => {
                   </ul>
                 </div>
                 <div className="skill__details">
-                  <h4>E-Commerce</h4>
+                  <h4>LLM</h4>
                   <ul>
                     <li>
-                      <span>Shopify</span>
+                      <span>Lang Chain(.js)</span>
                     </li>
                   </ul>
                 </div>

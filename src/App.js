@@ -16,6 +16,7 @@ import Skill from './components/Skill/Skill';
 import Footer from './components/Footer/Footer';
 import Contact from './components/Contact/Contact';
 
+export const experienceStartDate='2022-09-01'
 function App() {
   return (
     <>
