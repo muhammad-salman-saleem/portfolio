@@ -120,11 +120,6 @@ const Skill = () => {
                         <b>Preprocessors:</b> SASS, MUI, Tailwing, Next UI
                       </span>
                     </li>
-                    <li>
-                      <span>
-                        <b>Modular:</b> BEM
-                      </span>
-                    </li>
                   </ul>
                 </div>
                 <div className="skill__details">
