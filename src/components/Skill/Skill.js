@@ -6,13 +6,12 @@ import TagCloud from 'TagCloud';
 import '../../styles/Skill/Skill.scss';
 
 const Skill = () => {
-  // Animation settings for Text Cloud
   useEffect(() => {
     const container = '.tagcloud';
     let radii;
 
     // If 3D Text Sphere is not showing up after deployment remove the return (i.e, return() =>{}) function from below code
-    return () => {
+    // return () => {
       const texts = [
         'HTML',
         'CSS',
@@ -55,7 +54,7 @@ const Skill = () => {
       };
 
       TagCloud(container, texts, options);
-    }
+    // }
   }, []);
   return (
     <>

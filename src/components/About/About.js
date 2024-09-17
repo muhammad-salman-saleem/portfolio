@@ -20,7 +20,6 @@ const About = () => {
         months += 12;
       }
 
-      // Return a string with years and months, if months > 0
       return months > 0 ? `${years} years and ${months} months` : `${years} years`;
     };
 
