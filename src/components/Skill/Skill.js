@@ -117,7 +117,7 @@ const Skill = () => {
                     </li>
                     <li>
                       <span>
-                        <b>Preprocessors:</b> SASS, MUI, Tailwing, Next UI
+                        <b>CSS Libraries:</b> SASS, MUI, Tailwing, Next UI
                       </span>
                     </li>
                   </ul>
