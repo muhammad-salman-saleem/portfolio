@@ -13,6 +13,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 import "../../styles/Contact/Contact.scss";
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
   const [fornData, setFornData] = useState({
     name: "",
     email: "",
@@ -20,6 +21,7 @@ const Contact = () => {
   });
   const sendEmail = (e) => {
     e.preventDefault();
+    setLoading(true);
     emailjs
       .send(
         process.env.REACT_APP_EMAIL_JS_SERVICE_ID,
@@ -40,10 +42,12 @@ const Contact = () => {
             email: "",
             message: "",
           });
+          setLoading(false);
         },
         (error) => {
           console.log("error=====",error)
           toast.error("Failed to send email, please try again later.");
+          setLoading(false);
         }
       );
   };
@@ -157,8 +161,15 @@ const Contact = () => {
                     onChange={onInputChange}
                   ></textarea>
                 </p>
-                <button type="submit" className="contact__send-btn">
-                  Send
+                <button type="submit" className="contact__send-btn" disabled={loading}>
+                  {loading ? (
+                    <>
+                      <span className="contact__spinner"></span>
+                      Sending...
+                    </>
+                  ) : (
+                    "Send"
+                  )}
                 </button>
               </form>
             </div>
