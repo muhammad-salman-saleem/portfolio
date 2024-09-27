@@ -83,7 +83,7 @@ this invaluable data for free through our groundbreaking NFT technology`,
         {
           compney:"LoopNixon",
           startDate:"September-2022",
-          endDate:"March-2023",
+          endDate:"November-2022",
           role:"Full Stack Developer",
           keyPoints:[
             {

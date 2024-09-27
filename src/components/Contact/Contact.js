@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,16 +7,57 @@ import {
   faEnvelope,
   faSquareCheck,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faLinkedin,
-  faGithub,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import emailjs from "@emailjs/browser";
+import toast, { Toaster } from "react-hot-toast";
 
 import "../../styles/Contact/Contact.scss";
 const Contact = () => {
+  const [fornData, setFornData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .send(
+        process.env.REACT_APP_EMAIL_JS_SERVICE_ID,
+        process.env.REACT_APP_EMAIL_JS_TEMPLATS_ID,
+        {
+          from_name: fornData.name,
+          from_email: fornData.email,
+          subject: `Email From Portfolio-${fornData.name}`,
+          message: fornData.message,
+        },
+        process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          toast.success("Email successfully sent!");
+          setFornData({
+            name: "",
+            email: "",
+            message: "",
+          });
+        },
+        (error) => {
+          toast.error("Failed to send email, please try again later.");
+        }
+      );
+  };
+
+  const onInputChange = (event) => {
+    const { name, value } = event.target;
+
+    setFornData({
+      ...fornData,
+      [name]: value,
+    });
+  };
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="contact" id="contact">
         <div className="contact__header">
           <h1>
@@ -77,16 +118,18 @@ const Contact = () => {
         <div className="contact__container">
           <div className="contact__details">
             <div className="contact__form" data-aos="fade-up">
-              <form name="contact" method="post">
+              <form name="contact" method="post" onSubmit={sendEmail}>
                 <input type="hidden" name="form-name" value="contact" />
                 <p className="contact__form-group">
                   <label htmlFor="name">Name: </label>
                   <input
                     type="text"
                     name="name"
+                    value={fornData.name}
                     autoComplete="off"
                     placeholder="Enter name"
                     required
+                    onChange={onInputChange}
                   />
                 </p>
                 <p className="contact__form-group">
@@ -94,9 +137,11 @@ const Contact = () => {
                   <input
                     type="email"
                     name="email"
+                    value={fornData.email}
                     autoComplete="off"
                     placeholder="Enter email"
                     required
+                    onChange={onInputChange}
                   />
                 </p>
                 <p className="contact__form-group">
@@ -104,9 +149,11 @@ const Contact = () => {
                   <textarea
                     name="message"
                     id="contact__message"
+                    value={fornData.message}
                     cols="20"
                     rows="5"
                     placeholder="Type your messsage"
+                    onChange={onInputChange}
                   ></textarea>
                 </p>
                 <button type="submit" className="contact__send-btn">
@@ -138,7 +185,7 @@ const Contact = () => {
                       style={{
                         color: "white",
                         textDecoration: "none",
-                        "&hover": {textDecoration: "underline",},
+                        "&hover": { textDecoration: "underline" },
                       }}
                     >
                       (+92) 3000071456
@@ -156,7 +203,7 @@ const Contact = () => {
                       style={{
                         color: "white",
                         textDecoration: "none",
-                        "&hover": {textDecoration: "underline",},
+                        "&hover": { textDecoration: "underline" },
                       }}
                       rel="noreferrer"
                     >
