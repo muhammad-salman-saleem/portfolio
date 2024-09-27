@@ -29,6 +29,7 @@ const Contact = () => {
         {
           from_name: fornData.name,
           from_email: fornData.email,
+          reply_to:fornData.email,
           subject: `Email From Portfolio-${fornData.name}`,
           message: fornData.message,
         },
