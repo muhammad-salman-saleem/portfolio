@@ -42,6 +42,7 @@ const Contact = () => {
           });
         },
         (error) => {
+          console.log("error=====",error)
           toast.error("Failed to send email, please try again later.");
         }
       );
